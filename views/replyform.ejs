@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
+<style type="text/css">
+  #commentsbro{
+background-color: #E3FFFC;
+
+}
+</style>
+</head>
+
+<body>
+
+
+
+
+<div class="w3-container">
+  <div class="w3-panel  w3-leftbar  w3-border-pink" id="commentsbro">
+
+  <h6>Reply to <%= docs.author.firstname %> <%= docs.author.lastname %> </h6>
+     
+           <strong><%= docs.author.firstname %><span><%= docs.author.lastname %></span>:-</strong>
+            <p style="font-size: 15px; "><%= docs.comment%></p>
+            <p>view replies(<%=docs.commentreplys.length%>)</p>
+
+            <% docs.commentreplys.forEach(function(reply) { %>
+            <b style="margin-left: 50px;"><%=reply.author.firstname%><%=reply.author.lastname%></b>
+            <p style="margin-left: 50px;"><%=reply.reply%></p>
+             <% if(currentUser && reply.author.ID.equals(currentUser._id)) { %>
+                 <form style="margin-left: 50px;" action="/replydelete/<%=reply.author.comment_id%>/<%=reply._id%>/?_method=DELETE" method="POST">
+                 <button class="btn"><i class="fa fa-trash"></i></button>
+                 </form>
+                 <%}%>
+            <%});%>
+
+</div>
+</div>
+
+         
+
+
+<div class="w3-container">
+  <%if(!currentUser){%>
+  <p>You must login to reply</p>
+    <a href="/login"><button  class="btn btn-primary">Login</button></a>
+
+  <%}else{%>
+<form  action="/home/<%= docs.author.blog_id %>/<%=docs._id%>/reply" method="POST">
+  <div class="form-group row">
+    <div class="col-sm-10">
+      <p>Reply</p><input type="text" name="reply" class="form-control form-control-sm" id="colFormLabelSm" placeholder="col-form-label-sm">
+      
+    </div>
+  </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+<br>
+<%}%>
+
+ <a href="/home/<%=docs.author.blog_id%>"><button class="btni"><i  class="fa fa-chevron-left"> Back to Review</i></button></a>
+
+
+  </div>
+
+
+
+
+
+	
+
+</body>
+</html>

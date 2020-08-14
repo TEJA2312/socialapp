@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
+
+
+
+<style type="text/css">.btn-blog {
+    color: #ffffff;
+    background-color: #37d980;
+    border-color: #37d980;
+    border-radius:0;
+    margin-bottom:10px
+}
+.btn-blog:hover,
+.btn-blog:focus,
+.btn-blog:active,
+.btn-blog.active,
+.open .dropdown-toggle.btn-blog {
+    color: white;
+    background-color:#34ca78;
+    border-color: #34ca78;
+}
+article h2{color:#333333;}
+h2{color:black;}
+ .margin10{margin-bottom:10px; margin-right:10px;
+ 	margin-left:20px; 
+ }
+.blogShort{ border-bottom:1px 
+    solid #ddd;
+ 
+    margin-top:20px; 
+    margin-left: 20px; 
+    color: #34495E;
+}
+.add{background: #333; padding: 10%; height: 300px;
+}
+#commentsbro{
+background-color: #EFFFFB;
+
+}
+
+
+</style>
+</head>
+<body>
+	
+
+   <a href="/home"><button class="btni"><i  class="fa fa-chevron-left"> Back to Home page</i></button></a>
+   <br>
+<div class="col-md-10 blogShort">
+
+                  <br>
+                     <img src="<%=docs.image%>"alt="post img" class="pull-left img-responsive postImg img-thumbnail margin10">
+                       
+                       
+                       <h2><b><%=docs.title%></</b></h2>
+                       <h5><span class="glyphicon glyphicon-time"></span> Post by <%=docs.author.firstname%><%=docs.author.lastname%> </h5>
+
+          <h4 class="w3-text-teal"><i class="fa fa-calendar fa-fw w3-margin-right"></i><%=docs.time%></h4>
+          <span class="w3-tag w3-pink w3-round"><%=docs.Blog_type%></span>
+
+          <h4>Rating</h4>
+          <h4><span class="w3-tag w3-blue w3-round"><%=docs.rating%></span></h4>
+                    <br>
+          <p><%=docs.your_summary%></p>
+          <br>
+          <div class="w3-container">
+  <div class="w3-panel  w3-leftbar w3-rightbar w3-border-blue" style="margin-left: 50px;" >
+  <h4 style="color: #28B463;  ">Positives of the <%=docs.Blog_type%></h4>
+    <p><%=docs.what_like%></p>
+  </div>
+  <div class="w3-panel  w3-leftbar w3-rightbar w3-border-red" style="margin-left: 50px;" >
+  <h4 style="color: #E74C3C;  ">Negatives of the <%=docs.Blog_type%></h4>
+    <p><%=docs.what_dislike%></p>
+  </div>
+  <br>
+<div class="w3-container w3-flat">
+  <h2>Comments</h2>
+  <form action="/home/<%= docs._id %>/comment" method="POST">
+    <div class="form-group">
+      <label for="email">Write Your Comment</label>
+      <%if(!currentUser){ %>
+      <input type="text" class="form-control" id="email" placeholder="Enter email" name="comment" disabled>
+       <small id="emailHelp" class="form-text text-muted">You must login to post comment <a href="/login">login</a></small>
+      <%}else{%>
+      <input type="text" class="form-control" id="email" placeholder="Enter email" name="comment">
+      <%}%>
+
+    </div>
+    <button class="w3-button w3-black">Submit</button>
+</form>
+<p></p>
+<div class="w3-container">
+
+  <div class="w3-panel  w3-leftbar  w3-border-black" id="commentsbro">
+    <% docs.comments.forEach(function(comment) { %>
+    
+  <h4 style="color: #207E99;"><%= comment.author.firstname %><span><%= comment.author.lastname %></h4>
+    <p><%= comment.comment%></p>
+      <a href="/reply/<%=comment._id%>">reply(<%=comment.commentreplys.length%>) </a>
+
+ 
+          <% if(currentUser && comment.author.ID.equals(currentUser._id)) { %>
+           <form action="/home/<%= docs._id %>/<%=comment._id%>/?_method=DELETE" method="POST">
+             <button class="btn"><i class="fa fa-trash"></i></button>
+           </form>
+
+           <%};%>
+     <%}); %>
+  </div>
+
+    
+ 
+
+
+</div>
+
+</div>
+
+</div>
+</div>
+  <% if(currentUser && docs.author.ID.equals(currentUser._id)){ %>
+<a href="/home/<%= docs._id %>/edit"><button type="button" class="btn btn-info">EDIT</button></a>
+<a href="/home/<%= docs._id %>/delete"><button type="button" class="btn btn-danger">DELETE</button></a>
+<% } %>
+
+                         
+                         
+
+
+</body>
+</html>

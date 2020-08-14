@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+body {
+  font-family: Arial;
+}
+
+.coupon {
+  border: 5px dotted #bbb;
+  width: 80%;
+  border-radius: 15px;
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.container {
+  padding: 2px 16px;
+  background-color: #f1f1f1;
+}
+
+.promo {
+  background: #ccc;
+  padding: 3px;
+}
+
+.expire {
+  color: red;
+}
+#image1 {
+ 
+  width: 200px;
+  padding: 0px;
+  margin: 20px;
+}
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the side navigation */
+.sidenav {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  sha
+}
+
+
+/* Side navigation links */
+.sidenav a {
+  color: white;
+  padding: 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color on hover */
+.sidenav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the content */
+.content {
+  margin-left: 200px;
+  padding-left: 20px;
+}
+
+#logo{
+  background-color: #ddd;
+  text-align: center;
+  color: black;
+}
+
+#content-desktop {display: block;}
+#content-mobile {display: none;}
+
+@media screen and (max-width: 768px) {
+
+#content-desktop {display: none;}
+#content-mobile {display: block;}
+
+}
+
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.4.7/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+
+
+<!-- 
+<div class="navbar">
+  <a class="active" href="#"><i class="fa fa-fw fa-home"></i> Home</a> 
+  <a href="/blog"><i class="far fa-edit"></i> Write</a>
+  <% if(!currentUser){ %> 
+  <a href="/register"><i class="far fa-handshake"></i> SignUp</a> 
+  <a href="/login"><i class="fa fa-fw fa-user"></i> Login</a>
+   <% }else{ %>
+    <a href="#"><i class="fas fa-user-edit"></i>logged in as <%= currentUser.firstname %></a> 
+  <a href="/logout"><i class="fas fa-glasses"></i>Logout </a>
+  <% } %>
+</div>
+
+ -->
+<div id="content-mobile" class="w3-bar w3-black">
+  <a href="/home" class="w3-bar-item w3-button w3-mobile">Home</a>
+  <%  if(!currentUser){  %>
+  <a href="/login" class="w3-bar-item w3-button w3-mobile">Login</a>
+  <a href="/register" class="w3-bar-item w3-button w3-mobile">Register</a>
+     <% }else { %>
+     <p  style="text-align: center;">Logged in as <%= currentUser.firstname%><%= currentUser.lastname%></p>
+  <a href="/logout" class="w3-bar-item w3-button w3-mobile">Logout</a>
+   <a href="/blog" class="w3-bar-item w3-button w3-mobile">Post</a>
+ <% } %>
+</div>
+
+<div id="content-desktop" class="sidenav">
+ 
+
+  <a href="/blog" style="text-align: center;">Post a Review</a>
+  <%  if(!currentUser){  %>
+   <a href="/register" style="text-align: center;">Register</a>
+  <a href="/login" style="text-align: center;">Login</a>
+    <% }else { %>
+    <a href="#" style="text-align: center;">Logged in as <%= currentUser.firstname%><%= currentUser.lastname%></a>
+ <a href="/logout" style="text-align: center;">Logout</a>
+
+
+ <% } %>
+
+</div>
+
+
+
+
+<!-- <%  if(!currentUser){  %>
+<li><a href="/register"><button>SignUp</button></a></li>
+<li><a href="/login"><button>Login</button></a></li>
+<% }else { %>
+
+<li><a href="/logout"><button>Logout</button></a></li>
+
+<% } %>
+
+<li><a href="/blog"><button>Write a blog</button></a></li> -->
+<br>
+
+ <% docs.forEach(function(docs) { %>
+ <br>
+
+<div class="coupon">
+  <div class="container">
+    <h3><span class="w3-tag w3-teal w3-round"><%=docs.Blog_type%></span> </h3>
+
+  </div>
+  <div id="image1">
+  <img src="<%=docs.image%>" alt="Avatar" style="width:100%;">
+ </div>
+  <div class="container" style="background-color:white">
+    <h2><b><%=docs.title%></b></h2> 
+     <h6 style="color: #28A789;">Author: <%=  docs.author.firstname %><%=  docs.author.lastname %> </h6>
+    <p><%=docs.your_summary%></p>
+  </div>
+  <div class="container">
+      <a href="/home/<%= docs._id %>"><button class="w3-button  w3-deep-purple">View Review</button></a>
+
+    <p style="color: #2876A7;">posted on: <br><%=docs.time%></p>
+  </div>
+</div>
+
+ <% }); %>
+
+<!--  <% docs.forEach(function(docs) { %>
+<ol>
+<ul> 
+	<li><b><%=  docs.author.username %></b></li>
+	<li> <%= docs.destination %> </li>
+	<li> <%= docs.title %> </li>
+	<li><a href="/home/<%= docs._id %>">show blog</a></li>
+	
+	
+</ul>
+</ol>
+ <% }); %> -->
+
+
+
+
+
+</body>
+</html>

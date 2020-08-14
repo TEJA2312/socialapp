@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body>
+<!-- 
+	 <form action="/home/<%= docs._id %>/?_method=PUT" method="POST">
+	
+	<input type="text"  value="<%= docs.destination %>"  name="destination" placeholder="destination" required>
+	<input type="text"  value="<%= docs.title %>"  name="title" placeholder="title" required>
+    <input type="text"  value="<%= docs.about_trip %>"  name="about_trip" placeholder="about_trip" required>
+	<input type="text"  value="<%= docs.food_section %>"  name="food_section" placeholder="food_section" required>
+	<input type="text"  value="<%= docs.best_spot %>"  name="best_spot" placeholder="best_spot" required>
+   
+     <button>SUBMIT</button>
+
+  </form> -->
+     <a href="/home"><button class="btni"><i  class="fa fa-chevron-left"> Back to Home page</i></button></a>
+  <form action="/home/<%= docs._id %>/?_method=PUT" method="POST">
+ 
+ <div class="form-group">
+    <label for="exampleInputEmail1">Title of the book </label>
+    <input type="text"name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<%=docs.title%>" required>
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleInputEmail1"> author of the book/ Director of the movie </label>
+    <input type="text" name="authorof_book" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<%=docs.authorof_book%>" required>
+    
+  </div>
+   <div class="form-group">
+    <label for="exampleInputEmail1">Image Link</label>
+    <input type="text" name="image" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<%=docs.image%>" required>
+    
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1"> Your Summary </label>
+    <textarea name="your_summary" class="form-control" id="exampleFormControlTextarea1" value="<%=docs.your_summary%>" rows="3"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Mention what you liked about the book</label>
+    <textarea name="what_like" class="form-control" id="exampleFormControlTextarea1" value="<%=docs.what_like%>" rows="3"></textarea>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Mention what you disliked about the book</label>
+    <textarea  name="what_dislike" class="form-control" id="exampleFormControlTextarea1" value="<%=docs.what_dislike%>" rows="3"></textarea>
+  </div>
+<h4>RATING</h4>
+ <div class="form-group">
+  <div class="form-check">
+  <input class="form-check-input" type="radio" name="rating" id="exampleRadios1" value="Good" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    Good
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="rating" id="exampleRadios1" value="Very Good">
+  <label class="form-check-label" for="exampleRadios1">
+    Very Good
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="rating" id="exampleRadios1" value="Awesome">
+  <label class="form-check-label" for="exampleRadios1">
+    Awesome
+  </label>
+</div>
+</div>
+<h4>TYPE OF REVIEW</h4>
+ <div class="form-group">
+  <div class="form-check">
+  <input class="form-check-input" type="radio" name="type" id="exampleRadios1" value="Book" checked>
+  <label class="form-check-label" for="exampleRadios1">
+    Book
+  </label>
+</div>
+
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="type" id="exampleRadios1" value="Movie">
+  <label class="form-check-label" for="exampleRadios1">
+    Movie
+  </label>
+</div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="type" id="exampleRadios1" value="TV Show">
+  <label class="form-check-label" for="exampleRadios1">
+    TV Show
+  </label>
+</div>
+</div>
+
+ 
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-colors-flat.css">
+</head>
+<body>
+
+<div class="w3-container w3-flat-wet-asphalt">
+  <h2>DELETE CONFIRMATION</h2>
+  <p>ARE you sure you want to delete the following data</p>
+  <p><%=docs.title%></p>
+    <p><%=docs.your_summary%></p>
+    <p>posted on <%=docs.time%></p>
+</div>
+<br>
+
+
+<form action="/home/<%= docs._id %>/?_method=DELETE" method="POST">
+<button>delete</button>
+</form>
+<br>
+<a href="/home/<%=docs._id%>"><button type="button" class="btn btn-inf0">CANCEL</button></a>
+</body>
+</html>
