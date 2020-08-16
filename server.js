@@ -1,9 +1,9 @@
 
 // ----require all models and packages from express----
 
-var Blog = require('./database/Book_model');
-var Comment = require('./database/comment');
-var Commentreply = require('./database/commentreply');
+var Blog = require('./database/Book_model.js');
+var Comment = require('./database/comment.js');
+var Commentreply = require('./database/commentreply.js');
 
 var express = require('express');
 var bodyParser = require('body-parser');
