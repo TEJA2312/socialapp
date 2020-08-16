@@ -1,6 +1,6 @@
 
 // ----require all models and packages from express----
-var mongoose = require('./database/mongoose');
+
 var Blog = require('./database/Book_model');
 var Comment = require('./database/comment');
 var Commentreply = require('./database/commentreply');
@@ -12,6 +12,13 @@ var methodOverride = require('method-override');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
 var app = express();
+
+var mongoose = require('mongoose'); 
+mongoose.Promise = global.Promise
+
+mongoose.connect('mongodb+srv://tejasdevs:tejasdevs@cluster0.svck3.mongodb.net/socialapp?retryWrites=true&w=majority',{ useNewUrlParser: true ,useFindAndModify: false, useUnifiedTopology: true });
+
+module.exports ={mongoose};
 
 
 
