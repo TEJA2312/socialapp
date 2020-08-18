@@ -1,13 +1,13 @@
 
 // ----require all models and packages from express----
 
-var Blog = require('./database/Book_model.js');
-var Comment = require('./database/comment.js');
-var Commentreply = require('./database/commentreply.js');
+var Blog = require('./Database/Book_model.js');
+var Comment = require('./Database/comment.js');
+var Commentreply = require('./Database/commentreply.js');
 
 var express = require('express');
 var bodyParser = require('body-parser');
-var User = require('./database/User_model');
+var User = require('./Database/User_model');
 var methodOverride = require('method-override');
 var passport = require('passport');
 var LocalStrategy = require('passport-local');
