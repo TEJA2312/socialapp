@@ -15,28 +15,28 @@ var UserSchema = new mongoose.Schema({
 
 authorof_book:{
 	type:String,
-
+	required:true
 },
 
   title:{
 	type:String,
-
+	required: true
    },
  
    your_summary:{
 	type:String,
-
+	required: true
    },
 
 
    what_like:{
 	type:String,
-
+	required: true
    },
 
   what_dislike:{
 	type:String,
-
+	required: true
    },
 
   
